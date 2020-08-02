@@ -1,3 +1,11 @@
+"""
+Program : minigame_monty_hall.py
+Author : Olivia Kennedy
+Date Last Modified 08/02/2020
+This program allows the user to provide input of their choice of door 1, 2, or 3 and their choice
+of doors after the host reveals a door that is not the prize door or the one they picked
+originally. This is modeled after the Monty Hall Problem.
+"""
 import random
 print("There are 3 doors. Two of them have goats, but the last one has a car!")
 user_input = int(input("Do you want to pick Door 1, 2, or 3: "))
@@ -14,6 +22,12 @@ class InvalidDoorSelection(Exception):
 
 def door_selection_1():
     if user_input not in [1,2,3]:
+        raise InvalidDoorSelection
+    else:
+        print("input is valid")
+
+def door_selection_2():
+    if final_door not in [1,2,3]:
         raise InvalidDoorSelection
     else:
         print("input is valid")
@@ -38,6 +52,7 @@ if __name__ == '__main__':
     door_selection_1()
     host_reveal()
     final_door = int(input("This is your final guess. Do you want Door 1, 2, or 3: "))
+    door_selection_2()
     print(win_or_lose())
     print("for debugging:",doors)
 
